@@ -50,6 +50,9 @@ dependencies {
     // optional - RxJava3 support
     implementation "androidx.paging:paging-rxjava3:$paging_version"
 
+    //Rxjava3
+    implementation "com.squareup.retrofit2:adapter-rxjava3:2.9.0"
+
     //hilt dagger
     implementation 'com.google.dagger:hilt-android:2.45'
     annotationProcessor 'com.google.dagger:hilt-compiler:2.45'
