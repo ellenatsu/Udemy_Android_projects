@@ -8,6 +8,7 @@ import androidx.paging.PagingData;
 import androidx.paging.rxjava3.PagingRx;
 
 import com.example.pagingapp.model.Movie;
+import com.example.pagingapp.paging.MoviePagingSource;
 
 import io.reactivex.rxjava3.core.Flowable;
 import kotlinx.coroutines.CoroutineScope;
