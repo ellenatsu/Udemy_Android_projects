@@ -7,7 +7,9 @@ apply plugin: 'com.google.dagger.hilt.android'
 
 android {
     compileSdk 32
-
+    buildFeatures{
+        viewBinding true
+    }
     defaultConfig {
         applicationId "com.example.pagingapp"
         minSdk 26
