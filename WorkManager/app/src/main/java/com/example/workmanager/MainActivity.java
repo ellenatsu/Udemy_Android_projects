@@ -64,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
         WorkRequest countWorkRequest = new
                 OneTimeWorkRequest
                         .Builder(DemoWorker.class)
-                    //    .setConstraints(constraints)
-                        .setInputData(data)
+                        //.setConstraints(constraints)  //set constraints
+                        .setInputData(data)  //set data transform
                         .build();
 
         btn.setOnClickListener(new View.OnClickListener() {
