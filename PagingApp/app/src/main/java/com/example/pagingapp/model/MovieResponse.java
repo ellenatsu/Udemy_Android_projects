@@ -37,13 +37,11 @@ public class MovieResponse {
         return movies;
     }
 
-    public void setMovies(List<Movie> moview) {
-        this.movies = moview;
+    public void setMovies(List<Movie> movies) {
+        this.movies = movies;
     }
 
-    public int getTotalResults() {
-        return totalResults;
-    }
+    public int getTotalResults() {return totalResults;}
 
     public void setTotalResults(int totalResults) {
         this.totalResults = totalResults;
