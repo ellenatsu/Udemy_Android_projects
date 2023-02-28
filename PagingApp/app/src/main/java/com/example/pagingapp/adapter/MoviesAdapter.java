@@ -42,7 +42,7 @@ public class MoviesAdapter extends PagingDataAdapter<Movie, MoviesAdapter.MovieV
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
         Movie currentMovie = getItem(position);
         if(currentMovie != null){
-            glide.load("https://image.tmdb.org/t/p/w500" + currentMovie.getPosterPath())
+            glide.load("https://image.tmdb.org/t/p/w500"+currentMovie.getPosterPath())
                     .into(holder.movieItemBinding.imageViewMovie);
             holder.movieItemBinding.textViewRating.setText(String.valueOf(currentMovie.getVoteAverage()));
 

@@ -30,7 +30,7 @@ public class MoviesLoadStateAdapter extends LoadStateAdapter<MoviesLoadStateAdap
 
     @NonNull
     @Override
-    public MoviesLoadStateAdapter.LoadStateViewHolder onCreateViewHolder(@NonNull ViewGroup parent, @NonNull LoadState loadState) {
+    public LoadStateViewHolder onCreateViewHolder(@NonNull ViewGroup parent, @NonNull LoadState loadState) {
         return new LoadStateViewHolder(parent, mRetryCallback);
     }
 
