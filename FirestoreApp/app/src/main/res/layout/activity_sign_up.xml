@@ -4,67 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_main"
-    tools:context=".MainActivity">
-
+    android:background="@drawable/gradient_main">
 
     <TextView
-        android:id="@+id/textWelcome"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:text="Welcome to Journal App."
-        android:textSize="18sp"
+        android:layout_marginBottom="44dp"
+        android:text="SIGN UP"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/email"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/email_new"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <AutoCompleteTextView
-        android:id="@+id/email"
+        android:id="@+id/email_new"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="245dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="24dp"
         android:hint="Email"
-        app:layout_constraintBottom_toTopOf="@+id/password"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/password_new"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="22dp"
         android:hint="Password"
         android:inputType="textPassword"
         android:maxLines="1"
-        app:layout_constraintBottom_toTopOf="@+id/login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email_new" />
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="41dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginTop="20dp"
+        android:background="none"
         android:text="LOG IN"
-        android:background="none"
-        app:layout_constraintBottom_toTopOf="@+id/create_acc"
-        app:layout_constraintStart_toStartOf="@+id/create_acc" />
-
-    <Button
-        android:id="@+id/create_acc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="251dp"
-        android:text="CREATE ACCOUNT"
-        android:background="none"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_new" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
