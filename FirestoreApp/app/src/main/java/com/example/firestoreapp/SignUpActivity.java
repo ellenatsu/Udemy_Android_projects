@@ -1,5 +1,6 @@
 package com.example.firestoreapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.provider.FontsContractCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -50,7 +52,11 @@ public class SignUpActivity extends AppCompatActivity {
         email_create = findViewById(R.id.email_new);
         pwd_create = findViewById(R.id.password_new);
 
-        //authentication
+        //auth
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        //firebase auth requires google account runs
+
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -88,26 +94,35 @@ public class SignUpActivity extends AppCompatActivity {
                                         userObj.put("username", email);
 
                                         //add user to firebase
-                                        collectionReference.add(userObj)
-                                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                        collectionReference.add(userObj).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                            @Override
+                                            public void onSuccess(DocumentReference documentReference) {
+
+                                                documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                                     @Override
-                                                    public void onSuccess(DocumentReference documentReference) {
+                                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                                        if (Objects.requireNonNull(task.getResult()).exists()) {
+                                                            String name = task.getResult().getString("username");
 
-                                                        documentReference.get()
-                                                                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                                                    @Override
-                                                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                                                        if(Objects.requireNonNull(task.getResult()).exists()){
-                                                                            String name = task.getResult().getString("username");
+                                                            // if user register successfully, move to journal activity
+                                                            Intent i = new Intent(SignUpActivity.this, AddJounralActivity.class);
 
-                                                                            // if user register successfully, move to journal activity
-                                                                    }
-                                                                }
+                                                            i.putExtra("username", name);
+                                                            i.putExtra("userId", curUserId);
+                                                            startActivity(i);
+                                                        }else{
 
+                                                        }
+                                                    }
+                                                }).addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+                                                        Toast.makeText(SignUpActivity.this, "Error!", Toast.LENGTH_SHORT);
 
-                                                        });
                                                     }
                                                 });
+                                            }
+                                        });
                                     }
 
                                 }
